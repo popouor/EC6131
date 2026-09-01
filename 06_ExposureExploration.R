@@ -1,4 +1,4 @@
-# XXXII. Creation of one observation of exposure per estate
+# XXXIII. Creation of one observation of exposure per estate
 
 estate_summary <- resale %>%
   group_by(Estate) %>%
@@ -20,7 +20,7 @@ estate_summary <- resale %>%
     share_5room = mean(flat_type == "5 ROOM")
   )
 
-# XXXIII. What correlates most with Exposure? Defining High Exposure variables
+# XXXIV. What correlates most with Exposure? Defining High Exposure variables
 
 estate_summary <- estate_summary %>%
   mutate(
@@ -39,7 +39,7 @@ estate_summary %>%
     share_5room = mean(share_5room)
   )
 
-# XXXIV. Are the differences between low and high exposure significant?
+# XXXV. Are the differences between low and high exposure significant?
 
 t.test(avg_price ~ high_exposure, data = estate_summary)
 
