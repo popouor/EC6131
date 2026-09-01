@@ -55,3 +55,25 @@ ggplot(event_df, aes(event_time, estimate)) +
   theme_classic(base_size = 14)
 
 mean(abs(event_df$estimate[event_df$event_time < 0]))
+
+# XXX. Wald Test
+
+pre_terms24 <- names(coef(model_es))
+pre_terms12 <- names(coef(model_es))
+pre_terms6 <- names(coef(model_es))
+
+pre_terms24 <- pre_terms24[
+  grepl("^event_time::-([2-9]|1[0-9]|2[0-4]):exposure_gis$", pre_terms24)
+]
+
+pre_terms12 <- pre_terms12[
+  grepl("^event_time::-([2-9]|1[0-2]):exposure_gis$", pre_terms12)
+]
+
+pre_terms6 <- pre_terms6[
+  grepl("^event_time::-([2-6]):exposure_gis$", pre_terms6)
+]
+
+wald(model_es, keep = pre_terms24)
+wald(model_es, keep = pre_terms12)
+wald(model_es, keep = pre_terms6)
