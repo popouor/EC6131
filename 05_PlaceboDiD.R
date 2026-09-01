@@ -1,11 +1,11 @@
-# XXX. Creation of Placebo Variable
+# XXXI. Creation of Placebo Variable
 
 resale <- resale %>%
   mutate(
     placebo_post = if_else(month >= as.Date("2024-03-01"), 1, 0)
   )
 
-# XXXI. Placebo DiD
+# XXXII. Placebo DiD
 
 model_placebo <- feols(
   log_price ~
